@@ -1,0 +1,34 @@
+[
+  {
+    "id": "discord",
+    "clientId": "812852515669278751",
+    "clientSecret": "${DISCORD_SECRET}",
+    "scope": "identify email",
+    "authorizeURL": "https://discord.com/api/oauth2/authorize",
+    "tokenURL": "https://discord.com/api/oauth2/token",
+    "userDataURL": "https://discord.com/api/v8/users/@me",
+    "linkageField": "email",
+    "idField": "id",
+    "dataAccessRules": {
+      "id": ["identity"],
+      "username": ["identity"],
+      "avatar": ["identity"]
+    }
+  },
+  {
+    "id": "twitch",
+    "clientId": "lfzsn1cy97bk5qwf3kk0y49m2knacf",
+    "clientSecret": "${TWITCH_SECRET}",
+    "scope": "user_read",
+    "authorizeURL": "https://api.twitch.tv/kraken/oauth2/authorize",
+    "tokenURL": "https://api.twitch.tv/kraken/oauth2/token",
+    "userDataURL": "https://api.twitch.tv/kraken/user",
+    "linkageField": "email",
+    "idField": "id",
+    "dataAccessRules": {
+      "id": ["identity"],
+      "display_name": ["identity"],
+      "profile_image_url": ["identity"]
+    }
+  }
+]

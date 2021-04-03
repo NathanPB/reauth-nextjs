@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import reauth from "../services/reauth";
-import './styles.css';
 
 export default function Home({ session, identity }) {
 
@@ -8,13 +7,14 @@ export default function Home({ session, identity }) {
     return (
       <section>
         <a href="/api/auth/logout">Log Out</a>
+        <br/>
         <article>
           <h2>Session</h2>
-          <textarea value={JSON.stringify(session)} readOnly/>
+          <code className="code">{JSON.stringify(session)}</code>
         </article>
         <article>
           <h2>Identity</h2>
-          <textarea value={JSON.stringify(identity)} readOnly/>
+          <code className="code">{JSON.stringify(identity)}</code>
         </article>
       </section>
     )
