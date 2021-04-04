@@ -22,12 +22,9 @@ import ReauthConfig from "../ReauthConfig";
 import {NextApiRequest} from "next";
 
 export default (config: ReauthConfig) => async (req: NextApiRequest) => {
-  const url = `${config.appBaseUrl}/api/${config.reauthApiBasePath}/identity`
-  const headers = {
-    Authorization: `Bearer ${req.cookies[config.cookieKey]}`
-  }
+  const headers = { Authorization: `Bearer ${req.cookies[config.cookieKey]}` }
   try {
-    return (await Axios.get(url, { headers })).data
+    return (await Axios.get(`${config.reauthBaseUrl}/identity`, { headers })).data
   } catch (e) {
     return null
   }
