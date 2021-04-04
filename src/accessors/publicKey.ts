@@ -22,7 +22,7 @@ import ReauthConfig from "../ReauthConfig";
 import lazy from 'lazyasfk/src/async'
 
 const getPk = (config: ReauthConfig) => lazy(async () => {
-  return (await Axios.get(`${config.reauthBaseUrl}/public_key.pub`)).data;
+  return (await Axios.get(`${config.reauthBaseUrl}/public_key.pub`)).data.replaceAll('RSA ', '')
 }).get
 
 export default getPk as (config: ReauthConfig) => () => Promise<string>
