@@ -8,6 +8,7 @@
   "license": "LGPL-v3",
   "scripts": {
     "build": "tsc --build",
+    "prepublish": "npm run build",
     "predev": "npm run build",
     "dev": "tsc -w",
     "test": "echo \"Error: no test specified\" && exit 1"
