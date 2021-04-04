@@ -26,17 +26,12 @@ export default function Home({ session, identity }) {
     return (
       <ul>
         <li>
-          <a href={`/api/auth/authorize/google?client_id=${id}&redirect_uri=${redirect}&response_type=code&scope=identity`}>
-            Login With Google
-          </a>
-        </li>
-        <li>
-          <a href={`/api/auth/authorize/discord?client_id=${id}&redirect_uri=${redirect}&response_type=code&scope=identity`}>
+          <a href={`/api/auth/oauth/authorize/discord?client_id=${id}&redirect_uri=${redirect}&response_type=code&scope=identity`}>
             Login With Discord
           </a>
         </li>
         <li>
-          <a href={`/api/auth/authorize/twitch?client_id=${id}&redirect_uri=${redirect}&response_type=code&scope=identity`}>
+          <a href={`/api/auth/oauth/authorize/twitch?client_id=${id}&redirect_uri=${redirect}&response_type=code&scope=identity`}>
             Login With Twitch
           </a>
         </li>

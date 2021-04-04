@@ -3,7 +3,7 @@ Example usage of Reauth with the Next.JS wrapper
 This example contains:
 - ReAuth setup with ``docker-compose``, for demonstration purposes only.
 - Set up the ReAuth client route handlers in ``/api/auth``
-- ReAuth configuration to login with Google, Twitch and Discord
+- ReAuth configuration to login with Twitch and Discord
 
 ## ReAuth Configuration
 
@@ -40,17 +40,12 @@ const redirect = `${reauth.config.appBaseUrl}/api/${reauth.config.reauthApiBaseP
 return (
   <ul>
     <li>
-      <a href={`/api/auth/authorize/google?client_id=${id}&redirect_uri=${redirect}&response_type=code&scope=identity`}>
-        Login With Google
-      </a>
-    </li>
-    <li>
-      <a href={`/api/auth/authorize/discord?client_id=${id}&redirect_uri=${redirect}&response_type=code&scope=identity`}>
+      <a href={`/api/auth/oauth/authorize/discord?client_id=${id}&redirect_uri=${redirect}&response_type=code&scope=identity`}>
         Login With Discord
       </a>
     </li>
     <li>
-      <a href={`/api/auth/authorize/twitch?client_id=${id}&redirect_uri=${redirect}&response_type=code&scope=identity`}>
+      <a href={`/api/auth/oauth/authorize/twitch?client_id=${id}&redirect_uri=${redirect}&response_type=code&scope=identity`}>
         Login With Twitch
       </a>
     </li>
