@@ -1,9 +1,10 @@
 {
   "name": "reauth-nextjs",
   "version": "1.0.0",
-  "description": "reAuth plugin for NextJS",
+  "description": "ReAuth plugin for NextJS",
   "main": "dist/index.js",
   "author": "NathanPB",
+  "repository": "https://github.com/NathanPB/reauth-nextjs",
   "license": "LGPL-v3",
   "scripts": {
     "build": "tsc --build",
