@@ -54,6 +54,6 @@ export default (config: ReauthConfig, getPublicKey: ()=>Promise<string>) => asyn
     config.onLogin?.call(req, res, data)
     res.redirect(config.postLoginRedirect)
   } catch (e: any) {
-    config.onLoginFail(req, res, e)
+    config.onLoginFail?.call(req, res, e)
   }
 }
