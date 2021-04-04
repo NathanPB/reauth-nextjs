@@ -23,7 +23,7 @@ import Cookies from 'cookies';
 import Axios from 'axios';
 import jwt from 'jsonwebtoken';
 
-export default (config: ReauthConfig, pk: Promise<String>) => async (req: NextApiRequest, res: NextApiResponse) => {
+export default (config: ReauthConfig, pk: () => Promise<String>) => async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const code = req.query.code
 
@@ -31,15 +31,20 @@ export default (config: ReauthConfig, pk: Promise<String>) => async (req: NextAp
       throw new Error('Authorization code not received')
     }
 
-    const { data } = await Axios.post(`${config.appBaseUrl}/api/${config.reauthApiBasePath}/oauth/token`, {
+    const url = `${config.reauthBaseUrl}/oauth/token`
+    const payload = {
       code,
       client_id: config.clientId,
       client_secret: config.clientSecret,
       grant_type: 'authorization_code',
-      redirect_uri: `${process.env.NEXT_PUBLIC_APP_BASE_URL}/api/${config.reauthApiBasePath}/callback`
-    })
+      redirect_uri: `${config.appBaseUrl}/api/${config.reauthApiBasePath}/callback`
+    }
 
-    jwt.verify(data.access_token, await pk)
+    const { data } = await Axios.post(url, payload)
+
+    console.log('c', await pk())
+
+    jwt.verify(data.access_token, await pk())
 
     const cookies = new Cookies(req, res)
     cookies.set(config.cookieKey, data.access_token, {
@@ -50,7 +55,7 @@ export default (config: ReauthConfig, pk: Promise<String>) => async (req: NextAp
 
     config.onLogin?.call(req, res, data)
     res.redirect(config.postLoginRedirect)
-  } catch (e) {
+  } catch (e: any) {
     config.onLoginFail(req, res, e)
   }
 }
