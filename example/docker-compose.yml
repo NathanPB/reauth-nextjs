@@ -13,5 +13,9 @@ services:
       - "./reauth/managers.json:/app/managers.json:ro"
     depends_on:
       - mongodb
+    environment:
+      MONGO_CONN_STRING: "mongodb://mongodb"
   mongodb:
     image: "mongo:4.2.10-bionic"
+    volumes:
+      - "./reauth/entrypoint.js:/docker-entrypoint-initdb.d/entrypoint.js:ro"

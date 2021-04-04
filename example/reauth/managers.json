@@ -1,7 +1,1 @@
-[
-  {
-    "id": "vis",
-    "displayName": "Very Intuitive Service",
-    "token": "${REAUTH_MANAGER_TOKEN}"
-  }
-]
+[]

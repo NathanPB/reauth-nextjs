@@ -26,8 +26,8 @@ export default createReauth({
   postLogoutRedirect: '/',
   postLoginRedirect: '/',
 
-  clientId: process.env.CLIENT_ID,
-  clientSecret: process.env.CLIENT_SECRET,
+  clientId: "demo_client_id",
+  clientSecret: "demo_client_secret",
 
   cookieMaxAge: 1036800000,
   cookieKey: 'reauth_cookie',
