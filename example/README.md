@@ -40,7 +40,7 @@ const redirect = `${reauth.config.appBaseUrl}/api/${reauth.config.reauthApiBaseP
 return (
   <ul>
     <li>
-      <a href={`/api/auth/authorize/googled?client_id=${id}&redirect_uri=${redirect}&response_type=code&scope=identity`}>
+      <a href={`/api/auth/authorize/google?client_id=${id}&redirect_uri=${redirect}&response_type=code&scope=identity`}>
         Login With Google
       </a>
     </li>
