@@ -29,6 +29,6 @@
     "cookies": "^0.8.0",
     "http-proxy-middleware": "^1.1.0",
     "jsonwebtoken": "^8.5.1",
-    "promise-memoize": "^1.2.1"
+    "lazyasfk": "^1.2.1"
   }
 }

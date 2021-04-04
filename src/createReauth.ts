@@ -36,7 +36,7 @@ export default (config: ReauthConfig) => {
   const pk = publicKey(config)
 
   return {
-    publicKey: publicKey(config),
+    getPublicKey: publicKey(config),
     identity: identity(config),
     session: session(config, pk),
 

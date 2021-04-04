@@ -17,11 +17,13 @@
  * along with ReAuth.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import memoize from 'promise-memoize'
 import Axios from "axios";
 import ReauthConfig from "../ReauthConfig";
+import lazy from 'lazyasfk/src/async'
 
-export default (config: ReauthConfig) => memoize(async () => {
+const getPk = (config: ReauthConfig) => lazy(async () => {
   const url = `${config.appBaseUrl}/api/${config.reauthApiBasePath}/public_key.pub`
   return (await Axios.get(url)).data;
-})
+}).get
+
+export default getPk as (config: ReauthConfig) => () => Promise<string>

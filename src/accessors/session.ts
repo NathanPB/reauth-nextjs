@@ -21,9 +21,9 @@ import { NextApiRequest } from 'next';
 import ReauthConfig from "../ReauthConfig";
 import jwt from 'jsonwebtoken';
 
-export default (config: ReauthConfig, publicKey: Promise<string>) => async (req: NextApiRequest) => {
+export default (config: ReauthConfig, getPublicKey: ()=>Promise<string>) => async (req: NextApiRequest) => {
   try {
-    return jwt.verify(req.cookies[config.cookieKey], await publicKey)
+    return jwt.verify(req.cookies[config.cookieKey], await getPublicKey())
   } catch (e) {
     return null
   }

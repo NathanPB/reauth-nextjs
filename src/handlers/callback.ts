@@ -23,7 +23,7 @@ import Cookies from 'cookies';
 import Axios from 'axios';
 import jwt from 'jsonwebtoken';
 
-export default (config: ReauthConfig, pk: () => Promise<String>) => async (req: NextApiRequest, res: NextApiResponse) => {
+export default (config: ReauthConfig, getPublicKey: ()=>Promise<string>) => async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const code = req.query.code
 
@@ -42,9 +42,7 @@ export default (config: ReauthConfig, pk: () => Promise<String>) => async (req: 
 
     const { data } = await Axios.post(url, payload)
 
-    console.log('c', await pk())
-
-    jwt.verify(data.access_token, await pk())
+    jwt.verify(data.access_token, await getPublicKey())
 
     const cookies = new Cookies(req, res)
     cookies.set(config.cookieKey, data.access_token, {
